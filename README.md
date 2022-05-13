@@ -34,15 +34,15 @@ Users can create account, from that account can login/logout. Can create differe
 
 > scripts
 
-Contains the scripts for running the contracts from **Near CLI**
+- Contains the scripts for running the contracts from **Near CLI**
 
 > src/singleton/assembly/index.ts
 
-Contains the smart contract implemantation of the models
+- Contains the smart contract implemantation of the models
 
 > src/singleton/assembly/model.ts
 
-Contains the serializable models and their methods for **CRUD** operations
+- Contains the serializable models and their methods for **CRUD** operations
 
 ---
 
@@ -52,19 +52,23 @@ Contains the serializable models and their methods for **CRUD** operations
 
 > **show-products.sh**
 
-Display all products
+- Display all products
+
 > **get-product-by-id.sh**
 
-Retrieve the product by its id
+- Retrieve the product by its id
+
 > **create-product.sh**
 
-Create a new product and store it, in the persistent storage.
+- Create a new product and store it, in the persistent storage.
+
 > **update-product.sh**
 
-Update the values of previously created product
+- Update the values of previously created product
+
 > **delete-product.sh**
 
-Delete an existing product by its id
+- Delete an existing product by its id
 
 ---
 
@@ -72,24 +76,27 @@ Delete an existing product by its id
 
 > **create-cart-for-user.sh**
 
-Create a cart for the user
+- Create a cart for the user
 
 > **delete-user.sh**
 
-Delete the user from storage
+- Delete the user from storage
 
 > **get-users.sh**
 
-Display all the users
+- Display all the users
+
 > **login-user.sh**
 
-Login with user credentials and change login statu to **true**.
+- Login with user credentials and change login statu to **true**.
+
 > **logout-user.sh**
 
-Logout and change login statu to **false**
+- Logout and change login statu to **false**
+
 > **register-user.sh**
 
-Register and create new user in the persistent storage
+- Register and create new user in the persistent storage
 
 ---
 
@@ -97,14 +104,17 @@ Register and create new user in the persistent storage
 
 > **add-product-to-cart.sh**
 
-Add a product to the user cart
+- Add a product to the user cart
+
 > **buy-cart-products.sh**
 
-Buy all the products from user list. Retrieve total amount
+- Buy all the products from user list. Retrieve total amount
+
 > **get-carts.sh**
 
-Display all the carts from all users
+- Display all the carts from all users
+
 > **remove-product-from-cart.sh**
 
-Remove a product from cart.
+- Remove a product from cart.
 
