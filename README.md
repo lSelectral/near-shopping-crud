@@ -46,26 +46,42 @@ Users can create account, from that account can login/logout. Can create differe
 
 > src/singleton/assembly/index.ts
 
-- Contains the smart contract implemantation of the models
+- Contains the smart contract implemantation of the models and its methods
 
 > src/singleton/assembly/model.ts
 
 - Contains the serializable models and their methods for **CRUD** operations
 
 ```txt
-src
-├── lottery                       <-- Lottery contract
-│   ├── README.md
-│   ├── __tests__
-│   │   ├── README.md
-│   │   ├── fee-strategies.unit.spec.ts
-│   │   ├── index.unit.spec.ts
-│   │   └── lottery.unit.spec.ts
-│   └── assembly
-│       ├── fee-strategies.ts
-│       ├── index.ts
-│       └── lottery.ts
-└── utils.ts                      <-- shared contract code
+near-shopping-crud
+├── src                       
+│   ├── singleton
+│   │   ├─assembly
+│   │   ├── index.ts    
+│   │   └── model.ts
+│   scripts
+│   │── cart
+│   │   │── add-product-to-cart.sh
+│   │   │── buy-cart-products.sh
+│   │   │── get-carts.sh
+│   │   │── remove-product-from-cart.sh
+│   │── product  
+│   │   │── show-products.sh
+│   │   │── get-product-by-id.sh
+│   │   │── create-product.sh
+│   │   │── update-product.sh
+│   │   │── delete-product.sh
+│   │── user  
+│   │   │── create-cart-for-user.sh
+│   │   │── delete-user.sh
+│   │   │── get-users.sh
+│   │   │── login-user.sh
+│   │   │── logout-user.sh
+│   │   │── register-user.sh
+│   │── dev-deploy.sh  
+│   │── production-deploy.sh  
+│   │── UNIFIED_SCRIPTS.sh  
+│─────────────────────────────────────────────────────────
 ```
 
 ---
