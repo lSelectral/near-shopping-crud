@@ -1,7 +1,9 @@
 # NEAR SHOPPING WEB3 API
 
 The purpose of this project is, providing an decentralized Web3 api interface for online shopping. App runs fully on the Near blockchain with smart contracts. 
-Users can create account, from that account can login/logout. Can create different carts for specific purpose like, **breakfast**, **dinner**, **technology** etc. Users can add specific product to this carts and manage their shopping experience seaminglessly.
+Users can create account, from that account can login/logout. Can create different carts for specific purpose like, **breakfast**, **dinner**, **technology** etc. Users can add specific product to this carts and manage their shopping experience seamlessly.
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/a38053636dc740d38ddbe04e695c0574" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
 1. [ FEATURES ](#features)
 2. [ NEAR SPECS ](#near-specs)
@@ -138,7 +140,7 @@ near command has `$` prefix because, in windows, it doesn't recognized as global
 - Args:
 	- id : `u32`
 
-- Ex: `$near view $CONTRACT getProductByID '{"id": 538052379}'`
+- Ex: `$near view $CONTRACT getProductById '{"id": 538052379}'`
 
 ---
 
@@ -153,8 +155,6 @@ near command has `$` prefix because, in windows, it doesn't recognized as global
 	- price : `i16` : Price of product
 
 - Ex: `$near call $CONTRACT createProduct '{"userId": 4282263961, "name": "Bread", "price": 36}' --account_id $CONTRACT`
-
-- Create a new product and store it, in the persistent storage.
 
 ---
 

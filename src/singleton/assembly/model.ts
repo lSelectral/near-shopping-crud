@@ -1,8 +1,8 @@
 import { u128, math, PersistentUnorderedMap, Context, ContractPromiseBatch } from "near-sdk-as";
 
-export const userMap: PersistentUnorderedMap<u32, User> = new PersistentUnorderedMap<u32, User>("usersMapp");
-export const productMap: PersistentUnorderedMap<u32, Product> = new PersistentUnorderedMap<u32, Product>("productsMapp");
-export const cartMap: PersistentUnorderedMap<u32, Cart> = new PersistentUnorderedMap<u32, Cart>("cartsMapp");
+export const userMap: PersistentUnorderedMap<u32, User> = new PersistentUnorderedMap<u32, User>("usersMappppp");
+export const productMap: PersistentUnorderedMap<u32, Product> = new PersistentUnorderedMap<u32, Product>("productsMappppp");
+export const cartMap: PersistentUnorderedMap<u32, Cart> = new PersistentUnorderedMap<u32, Cart>("cartsMappppp");
 
 @nearBindgen
 export class User{

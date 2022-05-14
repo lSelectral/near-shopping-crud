@@ -16,4 +16,4 @@ echo "Retrieving the product by its id"
 echo ---------------------------------------------------------
 echo
 
-$near view $CONTRACT getProductByID '{"id": 538052379}'
+$near view $CONTRACT getProductById '{"id": 538052379}'
