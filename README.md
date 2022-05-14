@@ -535,4 +535,8 @@ Buy the products in the cart, and transfer the money from user.
 static buyCartProducts(userId: u32, cartId: u32):string{}
 ```
 
+<<<<<<< HEAD
 ---
+=======
+---
+>>>>>>> 39c86e74bfaf91885ba0874a28d667f253e6a500
