@@ -44,7 +44,10 @@ Users can create account, from that account can login/logout. Can create differe
 
 ## How to Run
 
-1. [Clone the repo](https://github.com/lSelectral/near-shopping-crud.git)
+1. Clone the repo
+```
+gh repo clone lSelectral/near-shopping-crud
+```
 2. Open the `bash` terminal in the project main directory.
 3. Run `yarn` or `npm install` for installing required node modules from `package.json`
 4. Run `yarn build:release` or `npm run build:release`
@@ -536,9 +539,4 @@ Buy the products in the cart, and transfer the money from user.
 ```
 static buyCartProducts(userId: u32, cartId: u32):string{}
 ```
-
-<<<<<<< HEAD
 ---
-=======
----
->>>>>>> 39c86e74bfaf91885ba0874a28d667f253e6a500
