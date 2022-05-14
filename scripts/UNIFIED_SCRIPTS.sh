@@ -43,7 +43,7 @@ $near call $CONTRACT addProductToCart '{"userId": 4282263961, "cartId": 40891499
 
 $near call $CONTRACT removeProductFromCart '{"userId": 4282263961, "cartId": 4089149924, "productId": 538052379}' --account_id $CONTRACT 
 
-$near view $CONTRACT getCarts
+$near view $CONTRACT getCarts '{"userId": 4282263961}'
 
 $near call $CONTRACT buyCartProducts '{"userId": 4282263961, "cartId": 4089149924}' --account_id $CONTRACT
 

@@ -16,4 +16,4 @@ echo "Retrieving all the carts from all users"
 echo ---------------------------------------------------------
 echo
 
-$near view $CONTRACT getCarts
+$near view $CONTRACT getCarts '{"userId": 4282263961}'

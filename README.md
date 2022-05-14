@@ -3,7 +3,23 @@
 The purpose of this project is, providing an decentralized Web3 api interface for online shopping. App runs fully on the Near blockchain with smart contracts. 
 Users can create account, from that account can login/logout. Can create different carts for specific purpose like, **breakfast**, **dinner**, **technology** etc. Users can add specific product to this carts and manage their shopping experience seaminglessly.
 
-> Features
+1. [ FEATURES ](#features)
+2. [ NEAR SPECS ](#near-specs)
+3. [ HOW TO RUN](#how-to-run)
+4. [ File Breakdown](#project-filefolder-breakdown)
+5. [ Scripts Breakdown](#scripts-breakdown)
+	-	[Product Scripts](#product-scripts)
+	-	[User Scripts](#user-scripts)
+	-	[Cart Scripts](#cart-scripts)
+6. [Function Breakdown](#function-breakdown)
+7. [MODEL.TS File Explanation](#modelts)
+	-	[User Class](#user-class)
+	-	[Product Class](#product-class)
+	-	[Cart Product Class](#cart-product-class)
+	-	[Cart Class](#cart-class)
+
+
+> ## Features
 
 - Product --> view
 - Product --> create/update/delete (ADMIN ONLY)
@@ -13,7 +29,7 @@ Users can create account, from that account can login/logout. Can create differe
 
 ---
 
->Near Specs 
+> ## Near Specs 
 
 - All data store in the  Near Blockchain persistent storage. (Models are marked as `@nearBindgen` for serialization)
 - All scripts run as smart contract.
@@ -38,7 +54,7 @@ Users can create account, from that account can login/logout. Can create differe
 
 ---
 
-## Projcet File/Folder Breakdown
+## Project File/Folder Breakdown
 
 > scripts
 
@@ -47,6 +63,8 @@ Users can create account, from that account can login/logout. Can create differe
 > src/singleton/assembly/index.ts
 
 - Contains the smart contract implemantation of the models and its methods
+
+Index file needs no explanation. It just implements the methods and classes in model.ts file which explained later.
 
 > src/singleton/assembly/model.ts
 
@@ -57,21 +75,21 @@ near-shopping-crud
 ├── src                       
 │   ├── singleton
 │   │   ├─assembly
-│   │   ├── index.ts    
-│   │   └── model.ts
+│   │   ├── index.ts    --> Entry point for smart contracts
+│   │   └── model.ts    --> Models and CRUD functions used in index.ts
 │   scripts
-│   │── cart
-│   │   │── add-product-to-cart.sh
+│   │── cart							--> Cart smart contract near-cli shell script
+│   │   │── add-product-to-cart.sh			
 │   │   │── buy-cart-products.sh
 │   │   │── get-carts.sh
 │   │   │── remove-product-from-cart.sh
-│   │── product  
+│   │── product  						--> Product smart contract near-cli shell script
 │   │   │── show-products.sh
 │   │   │── get-product-by-id.sh
 │   │   │── create-product.sh
 │   │   │── update-product.sh
 │   │   │── delete-product.sh
-│   │── user  
+│   │── user  							--> User smart contract near-cli shell script
 │   │   │── create-cart-for-user.sh
 │   │   │── delete-user.sh
 │   │   │── get-users.sh
@@ -80,7 +98,7 @@ near-shopping-crud
 │   │   │── register-user.sh
 │   │── dev-deploy.sh  
 │   │── production-deploy.sh  
-│   │── UNIFIED_SCRIPTS.sh  
+│   │── UNIFIED_SCRIPTS.sh  			--> Includes all smart contract view and call near-cli scripts
 │─────────────────────────────────────────────────────────
 ```
 
@@ -278,9 +296,10 @@ near command has `$` prefix because, in windows, it doesn't recognized as global
 - Description: **Display all the carts from all users**
 - Function Type: `View`
 - Returns: `All carts as <Cart[]>`
-- Args: `{}`
+- Args:
+	- userId : `u32` : Id of the user
 
-- Ex: `$near view $CONTRACT getCarts`
+- Ex: `$near view $CONTRACT getCarts '{"userId": 4282263961}'`
 
 ---
 
@@ -295,5 +314,225 @@ near command has `$` prefix because, in windows, it doesn't recognized as global
 	- productId : `u32` : Id of the product
 
 - Ex: `$near call $CONTRACT removeProductFromCart '{"userId": 4282263961, "cartId": 4089149924, "productId": 538052379}' --account_id $CONTRACT `
+
+---
+
+## FUNCTION BREAKDOWN
+
+This sections describes the each function, what it does, how it works.
+
+> ### model.ts
+
+Model file, contains the classes and their respective methods for crud operation for usage in the smart contracts in the `index.ts` file.
+
+---
+
+Model class has 3 class level variable exported that stores data in the blockchain.
+
+```
+// Store users
+export const userMap: PersistentUnorderedMap<u32, User>
+// Store products
+export const productMap: PersistentUnorderedMap<u32, Product>
+// Store carts
+export const cartMap: PersistentUnorderedMap<u32, Cart>
+```
+
+---
+
+---
+
+> ### User Class
+
+User class defined for managing the users in application. Users have access to login, logout, register, creating new cart and adding/removing product to cart. Users divided to 2 as Standard and Admin. Only admin priveledged users can create/delete/update product(s).
+
+```
+public id: u32;
+public name: string;
+public email: string;
+public password: string;
+public isAdmin: bool;
+public isLoggedIn: bool;
+```
+
+---
+
+Register user class, creates a new user with given values. Admin access can be obtained by parameter for demo purposes.
+
+```
+static registerUser(name: string, email: string, password: string, isAdmin: bool):User{}
+```
+
+---
+
+Login user, provides user to login and use functionalities available.
+This method updates the user `isLoggedIn` statu to `true`.
+
+```
+static loginUser(email: string, password: string): User{}
+```
+
+---
+
+Logout, change to user `isLoggedIn` statu to `false`
+
+```
+static logoutUser(userId: u32):string{}
+```
+
+---
+
+Delete user function is only accessible to admin for deleting user from the blockchain storage permanently.
+>[ADMIN ONLY]
+
+```
+static deleteUser(userId: u32):string{}
+```
+
+---
+
+Retrieve all users from the persistent storage
+
+```
+static getUsers():User[]{}
+```
+
+---
+
+Create a new cart for the user, with given name.
+
+```
+static createCartForUser(userId:u32, cartName: string):Cart{}
+```
+
+---
+
+---
+
+> #### Product Class
+
+Product class defined for storing, creating, updating and deleting the products by admin. Users can only view products and add this product to the cart.
+
+```
+public productName : string;
+public price : u128;
+public id: u32;
+```
+
+---
+
+Create a new product.
+>[ADMIN ONLY]
+
+```
+static createProduct(userId:u32, name: string, price: i16):Product{}
+```
+
+---
+
+Update the existing product.
+>[ADMIN ONLY]
+
+```
+static updateProduct(userId:u32, productId:u32, name: string, price: i16):Product{}
+```
+
+---
+
+Delete the existing product.
+>[ADMIN ONLY]
+
+```
+static deleteProduct(userId:u32, productId: u32):string{}
+```
+
+---
+
+Retrieve the all products.
+
+```
+static showProducts():Product[]{
+```
+
+---
+
+Retrieve a product by its id
+
+```
+static getProductById(id: u32):Product{}
+```
+
+---
+
+---
+
+
+> ### Cart Product Class
+
+Cart product class used for defining product and its amount in the cart
+
+```
+public product: Product;
+public amount: i64;
+public id: u32;
+```
+
+
+---
+
+---
+
+
+> ### Cart Class
+
+Cart class defines a cart created by user and holds the content in the blockchain.
+
+```
+public id: u32;
+public name: string;
+public userId: u32;
+public cartProducts: CartProduct[];
+```
+
+---
+
+Add a product to the cart by given amount
+
+```
+static addProductToCart(userId:u32, cartId:u32, productId:u32, amount: i64):Cart{}
+```
+
+---
+
+Remove a product from the cart
+
+```
+static removeProductFromCart(userId:u32, cartId:u32, productId:u32):string{}
+```
+
+---
+
+Retrieve all the carts for the user
+
+```
+static getCarts(userId: u32):Cart[]{}
+```
+
+---
+
+Get the total price of products in the cart.
+> [ONLY USED IN METHOD! NOT A SMART CONTRACT]
+
+```
+static getCartTotalPrice(cartId: u32):u128{}
+```
+
+---
+
+Buy the products in the cart, and transfer the money from user.
+
+```
+static buyCartProducts(userId: u32, cartId: u32):string{}
+```
 
 ---

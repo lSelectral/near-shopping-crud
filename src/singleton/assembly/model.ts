@@ -59,6 +59,9 @@ export class User{
   }
 
   static deleteUser(userId: u32):string{
+    const user = userMap.getSome(userId);
+    assert(user.isAdmin, "Only admin users can delete user");
+
     assert(userMap.contains(userId),"User with given id doesn't exist");
     userMap.delete(userId);
     return `User with ${userId} ID deleted`;
@@ -158,7 +161,7 @@ export class Cart{
   public cartProducts: CartProduct[];
 
   constructor(userId: u32, name: string){
-    this.id = math.hash32(name);
+    this.id = math.hash32(name) + userId;
     this.name = name;
     this.userId = userId;
     this.cartProducts = []
@@ -194,8 +197,17 @@ export class Cart{
     throw new Error("There is no product in the cart");
   }
 
-  static getCarts():Cart[]{
-    return cartMap.values(0,cartMap.length);
+  static getCarts(userId: u32):Cart[]{
+
+    const carts = cartMap.values(0,cartMap.length);
+    let userCarts: Cart[] = [];
+
+    for (let i = 0; i < carts.length; i++) {
+      const cart = carts[i];
+      if (cart.userId === userId) userCarts.push(cart);
+    }
+
+    return userCarts;
   }
 
   static getCartTotalPrice(cartId: u32):u128{

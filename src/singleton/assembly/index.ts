@@ -92,8 +92,8 @@ export class Contract {
   /**
    * @returns All carts from all users
    */
-  getCarts():Cart[]{
-    return Cart.getCarts();
+  getCarts(userId: u32):Cart[]{
+    return Cart.getCarts(userId);
   }
 
   /**
