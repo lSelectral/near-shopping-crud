@@ -51,6 +51,8 @@ Users can create account, from that account can login/logout. Can create differe
 5. For deploying the contract, run `production-deploy.sh` script, which located in the **`./scripts/production-deploy.sh`**.
 6. After step 5, command line will show the how to export **CONTRACT** environment variable for different OS.
 7. If all above steps completed, you can run scripts from `./scripts/product`,  `./scripts/user` and  `./scripts/cart`.
+8. For running scripts, in the bash terminal, run `sh [SCRIPT]`
+Ex: `sh scripts/product/create-product.sh` 
 
 ---
 
