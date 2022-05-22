@@ -4,7 +4,7 @@ The purpose of this project is, providing an decentralized Web3 api interface fo
 Users can create account, from that account can login/logout. Can create different carts for specific purpose like, **breakfast**, **dinner**, **technology** etc. Users can add specific product to this carts and manage their shopping experience seamlessly.
 
 
-LOOM DEMO VIDEO
+[LOOM DEMO VIDEO](https://www.loom.com/share/a38053636dc740d38ddbe04e695c0574)
 
 [![Near Shopping App](https://cdn.loom.com/sessions/thumbnails/a38053636dc740d38ddbe04e695c0574-with-play.gif)](https://www.loom.com/share/a38053636dc740d38ddbe04e695c0574)
 
