@@ -1,8 +1,6 @@
 # NEAR SHOPPING WEB3 API
 
-The purpose of this project is, providing an decentralized Web3 api interface for online shopping. App runs fully on the Near blockchain with smart contracts. 
-Users can create account, from that account can login/logout. Can create different carts for specific purpose like, **breakfast**, **dinner**, **technology** etc. Users can add specific product to this carts and manage their shopping experience seamlessly.
-
+This project provides a decentralized Web3 api interface for online shopping. App runs fully on the Near blockchain with smart contracts. Users can create account, from that account can login/logout. Can create different carts for specific purpose like, breakfast, dinner, technology etc. Users can add specific product to this carts and manage their shopping experience seamlessly.
 
 [LOOM DEMO VIDEO](https://www.loom.com/share/a38053636dc740d38ddbe04e695c0574)
 
