@@ -3,10 +3,17 @@
 The purpose of this project is, providing an decentralized Web3 api interface for online shopping. App runs fully on the Near blockchain with smart contracts. 
 Users can create account, from that account can login/logout. Can create different carts for specific purpose like, **breakfast**, **dinner**, **technology** etc. Users can add specific product to this carts and manage their shopping experience seamlessly.
 
+
+
 <a href="https://www.loom.com/share/a38053636dc740d38ddbe04e695c0574">
-    <p>RECEP ÇİFTÇİ - NEAR SHOPPING APP</p>
-    <img style="max-width:800px;" src="https://cdn.loom.com/sessions/thumbnails/a38053636dc740d38ddbe04e695c0574-with-play.gif">
+    <p>lSelectral/near-shopping-crud - Google Chrome - 15 May 2022 - Watch Video</p>
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/a38053636dc740d38ddbe04e695c0574-with-play.gif">
 </a>
+
+
+[![Near Dice Demo](https://cdn.loom.com/sessions/thumbnails/a38053636dc740d38ddbe04e695c0574-with-play.gif)](https://www.loom.com/share/a38053636dc740d38ddbe04e695c0574)
+
+
 
 
 
